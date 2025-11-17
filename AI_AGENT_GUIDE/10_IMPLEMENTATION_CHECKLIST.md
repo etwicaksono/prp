@@ -1,5 +1,29 @@
 # 10. Implementation Checklist & Troubleshooting
 
+## 📊 Coverage Overview
+
+This checklist now covers **100% of the development process** including:
+- **Core Implementation** (Documents 1-10)
+- **Optional Features** (Documents 11-15)
+- **Configuration & Setup** (Document 01A)
+- **Testing Requirements** (Document 14)
+- **Critical Rules** (Document 09)
+- **All promised features** from README
+
+Total Phases: 7 (Phase 0-6)
+Total Checklist Items: 400+
+
+### 📑 Phase Summary:
+- **Phase 0**: Configuration & Setup Validation (TypeScript, ESLint, Prettier)
+- **Phase 1**: Project Setup (Environment, Database, Folder Structure)
+- **Phase 2**: Backend Implementation (Auth, APIs, Transfers, Personal IDs)
+- **Phase 3**: Frontend Implementation (UI, Context, Services, State)
+- **Phase 4**: Data & Business Logic (Seeding, Amount Convention, Multi-tenancy)
+- **Phase 4B**: Additional Core Features (Budgets, Recurring, Analytics, Import/Export)
+- **Phase 4C**: Critical Rules Verification (All rules from Doc 09)
+- **Phase 5**: Testing & Validation (Unit, Integration, E2E, Security, Performance)
+- **Phase 6**: Optional Features (Backup, Themes, Google Integrations)
+
 ## 🔍 Pre-Validation Requirements
 
 ### CRITICAL: Run These Commands BEFORE Using the Checklist
@@ -105,6 +129,40 @@ if (process.env.NODE_ENV === 'development') {
 ## ✅ Complete Implementation Validation Checklist
 
 Use this checklist to verify that every critical component has been implemented correctly.
+
+---
+
+## 📋 Phase 0: Configuration & Setup Validation
+
+### Strict TypeScript Configuration (Doc 01A)
+- [ ] tsconfig.json has ALL strict flags enabled
+- [ ] `strict: true` enabled
+- [ ] `noImplicitAny: true`
+- [ ] `strictNullChecks: true`
+- [ ] `strictFunctionTypes: true`
+- [ ] `strictPropertyInitialization: true`
+- [ ] `noUnusedLocals: true`
+- [ ] `noUnusedParameters: true`
+- [ ] `noImplicitReturns: true`
+- [ ] `noFallthroughCasesInSwitch: true`
+- [ ] `noUncheckedIndexedAccess: true`
+
+### ESLint Configuration (Doc 01A)
+- [ ] .eslintrc.json configured with strict rules
+- [ ] TypeScript ESLint plugin installed
+- [ ] Security plugin configured
+- [ ] Accessibility (jsx-a11y) rules enabled
+- [ ] Import order rules configured
+- [ ] No-secrets plugin active
+- [ ] Unused imports detection enabled
+- [ ] React hooks rules enforced
+- [ ] No console.log in production rule
+
+### Prettier Configuration
+- [ ] .prettierrc file created
+- [ ] .prettierignore configured
+- [ ] Format on save enabled in VS Code
+- [ ] Consistent code formatting applied
 
 ---
 
@@ -244,6 +302,16 @@ Use this checklist to verify that every critical component has been implemented 
 - [ ] Category tree structure
 - [ ] Real-time balance updates
 
+### Service Layer Details (Doc 08)
+- [ ] Base API client with axios configured
+- [ ] Request interceptor adds auth token
+- [ ] Response interceptor handles token refresh
+- [ ] Error interceptor for global error handling
+- [ ] All services implement retry logic
+- [ ] Services handle BigInt/Decimal conversion
+- [ ] Type-safe response interfaces
+- [ ] Caching strategy implemented
+
 ### Phase 3 Tests Required
 - [ ] **Component Tests**:
   - [ ] Form validation tests
@@ -258,6 +326,8 @@ Use this checklist to verify that every critical component has been implemented 
   - [ ] API client tests
   - [ ] Error handling tests
   - [ ] Token injection tests
+  - [ ] Retry logic tests
+  - [ ] Cache invalidation tests
 
 ---
 
@@ -303,6 +373,113 @@ Use this checklist to verify that every critical component has been implemented 
   - [ ] Full user registration flow
   - [ ] Transaction lifecycle tests
   - [ ] Transfer operation tests
+
+---
+
+## 📋 Phase 4B: Additional Core Features
+
+### Budget Management System
+- [ ] Budget table in database schema
+- [ ] Monthly budget creation API
+- [ ] Category-specific budgets supported
+- [ ] Budget vs actual tracking
+- [ ] Over-budget alerts/notifications
+- [ ] Budget rollover logic
+- [ ] Budget analytics endpoints
+- [ ] Budget UI components
+- [ ] Budget progress visualization
+
+### Recurring Transactions
+- [ ] Recurring transaction model created
+- [ ] Schedule types (daily/weekly/monthly/yearly)
+- [ ] Recurrence pattern validation
+- [ ] Auto-creation job/cron setup
+- [ ] Next occurrence calculation
+- [ ] Skip/pause functionality
+- [ ] Edit series vs single occurrence
+- [ ] End date/occurrence limit
+- [ ] Recurring transaction UI
+
+### Analytics & Reporting
+- [ ] Monthly spending trend calculation
+- [ ] Category-wise spending analysis
+- [ ] Income vs expense comparison
+- [ ] Year-over-year growth metrics
+- [ ] Cash flow analysis
+- [ ] Top spending categories
+- [ ] Average transaction amounts
+- [ ] Export reports to PDF
+- [ ] Export reports to CSV
+- [ ] Chart/graph components
+
+### Import/Export (Core)
+- [ ] CSV import for transactions
+- [ ] Bank statement parser
+- [ ] QIF/OFX format support
+- [ ] Duplicate detection on import
+- [ ] Field mapping UI
+- [ ] Export filters (date range, accounts)
+- [ ] Export formats (CSV, JSON, Excel)
+
+---
+
+## 📋 Phase 4C: Critical Rules Verification (Doc 09)
+
+### Amount Sign Convention
+- [ ] ALL expenses stored as negative in database
+- [ ] ALL income stored as positive in database
+- [ ] Display formatting shows proper +/- signs
+- [ ] Input accepts positive values, converts based on type
+- [ ] Balance calculations handle signs correctly
+- [ ] Transfer amounts follow convention
+
+### Personal ID Management
+- [ ] Personal IDs are user-specific sequences
+- [ ] Personal ID generation always filters by user_id
+- [ ] Retry logic implemented (max 3 attempts)
+- [ ] Conflict resolution tested
+- [ ] Personal IDs sequential per entity type
+
+### Transfer Rules
+- [ ] ALWAYS creates TWO transactions
+- [ ] Source account gets negative transaction
+- [ ] Destination account gets positive transaction
+- [ ] Both transactions linked by transfer_id
+- [ ] Atomic operation (both succeed or both fail)
+- [ ] Currency conversion handled correctly
+
+### Context Provider Hierarchy
+- [ ] Exact order: Toast → AuthState → Auth → TransactionModal
+- [ ] No provider used before its dependency
+- [ ] All providers wrap entire app
+- [ ] Context hooks check for provider existence
+
+### Token Security
+- [ ] Tokens ALWAYS encrypted before localStorage
+- [ ] Tokens ALWAYS decrypted when reading
+- [ ] Refresh tokens stored separately
+- [ ] Token expiry handled gracefully
+- [ ] Auto-refresh on 401 responses
+
+### User Data Isolation
+- [ ] EVERY query includes user_id filter
+- [ ] No cross-user data access possible
+- [ ] Ownership verified before updates/deletes
+- [ ] API responses filtered by user
+- [ ] Shared resources properly scoped
+
+### Database Transactions
+- [ ] Multi-step operations use transactions
+- [ ] Rollback on any step failure
+- [ ] Account balance updates atomic
+- [ ] Transfer creation atomic
+- [ ] Default data seeding atomic
+
+### BigInt and Decimal Handling
+- [ ] All BigInt converted to Number for JSON
+- [ ] All Decimal converted to Number for JSON
+- [ ] Precision maintained in calculations
+- [ ] No JavaScript number overflow
 
 ---
 
@@ -497,6 +674,92 @@ npx prisma generate
 
 ---
 
+## 📋 Phase 6: Optional Features Implementation
+
+### Backup & Restore System (Doc 11)
+- [ ] JSON export endpoint implemented
+- [ ] Export includes all user data
+- [ ] Export metadata (version, date, checksum)
+- [ ] Import endpoint with validation
+- [ ] Import mode selection (replace/merge)
+- [ ] Personal ID regeneration on import
+- [ ] Conflict resolution for merge mode
+- [ ] File size limits enforced
+- [ ] Version compatibility check
+- [ ] UI for export/import
+- [ ] Download triggers properly
+- [ ] Progress indicators during import
+
+### Theme System (Doc 12 & 12A)
+- [ ] UserPreferences table created
+- [ ] Theme context provider implemented
+- [ ] Dark mode fully functional
+- [ ] Light mode fully functional
+- [ ] System theme detection
+- [ ] Custom theme creation
+- [ ] Color picker for accent colors
+- [ ] Theme persistence in database
+- [ ] Local storage fallback
+- [ ] Font size options (small/medium/large)
+- [ ] Compact mode toggle
+- [ ] CSS variables for theme colors
+- [ ] Smooth theme transitions
+- [ ] Accessibility compliance
+- [ ] Theme preview component
+
+### Google Sheets Integration (Doc 13 & 13A)
+- [ ] Google Cloud project setup
+- [ ] Sheets API enabled
+- [ ] Service account created
+- [ ] Credentials encrypted storage
+- [ ] Spreadsheet ID extraction
+- [ ] Sheet creation/verification
+- [ ] Headers auto-generation
+- [ ] Bidirectional sync logic
+- [ ] Personal ID as primary key
+- [ ] Position column for ordering
+- [ ] Upsert operations working
+- [ ] Sync status tracking
+- [ ] Sync conflict resolution
+- [ ] UI for sheet URL input
+- [ ] Sync direction selector
+- [ ] Manual sync trigger
+- [ ] Auto-sync option
+- [ ] Error handling for API limits
+
+### Google Drive Attachments (Doc 15 & 15A)
+- [ ] Drive API enabled
+- [ ] TransactionAttachment table created
+- [ ] GoogleDriveIntegration table created
+- [ ] File upload endpoint
+- [ ] File deletion endpoint
+- [ ] Attachment listing endpoint
+- [ ] Image compression with Sharp
+- [ ] File type validation
+- [ ] File size validation
+- [ ] Folder organization (Year/Month)
+- [ ] Auto folder creation
+- [ ] Direct view/download links
+- [ ] Thumbnail generation
+- [ ] Storage quota tracking
+- [ ] UI upload component
+- [ ] Drag-and-drop support
+- [ ] Preview for images
+- [ ] Attachment management UI
+- [ ] Transaction ownership verification
+
+### Google Ecosystem Integration
+- [ ] Single authentication setup
+- [ ] Shared credentials between services
+- [ ] OAuth2 flow (if implemented)
+- [ ] Service account permissions
+- [ ] Scope limitations proper
+- [ ] Integration settings UI
+- [ ] Connection status indicators
+- [ ] Disconnect functionality
+
+---
+
 ## 📞 Debug Commands
 
 ```bash
@@ -524,8 +787,7 @@ tail -f .next/server/*.log    # View server logs
 
 ## 🎯 Success Indicators
 
-Your implementation is successful when:
-
+### Core Features Success (Must Have):
 1. **User can register** and sees 70+ default categories
 2. **Transactions** show correct positive/negative amounts
 3. **Transfers** create two linked transactions
@@ -536,6 +798,18 @@ Your implementation is successful when:
 8. **Tokens refresh** automatically
 9. **Personal IDs** are sequential per user
 10. **All CRUD operations** work correctly
+11. **All critical rules** from Doc 09 enforced
+12. **Test coverage** > 80%
+
+### Additional Features Success (If Implemented):
+13. **Budgets** track spending vs limits
+14. **Recurring transactions** auto-create
+15. **Analytics** show trends and insights
+16. **Import/Export** handles CSV/JSON formats
+17. **Backup/Restore** preserves all data
+18. **Theme system** supports dark/light/custom
+19. **Google Sheets** syncs bidirectionally
+20. **Drive attachments** store receipts
 
 ---
 
