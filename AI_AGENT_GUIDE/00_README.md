@@ -27,6 +27,8 @@ This implementation guide is split into the following documents:
 13. **[13_GOOGLE_SHEETS_INTEGRATION.md](./13_GOOGLE_SHEETS_INTEGRATION.md)** - Bidirectional Google Sheets sync using personal_id as key
     - **[13A_GOOGLE_SHEETS_FRONTEND_SERVICE.md](./13A_GOOGLE_SHEETS_FRONTEND_SERVICE.md)** - Frontend service implementation
 14. **[14_TESTING_REQUIREMENTS.md](./14_TESTING_REQUIREMENTS.md)** - 🚨 **MANDATORY**: Unit, integration, and E2E testing requirements
+15. **[15_GOOGLE_DRIVE_ATTACHMENTS.md](./15_GOOGLE_DRIVE_ATTACHMENTS.md)** - Transaction attachments stored in user's Google Drive
+    - **[15A_GOOGLE_ECOSYSTEM_INTEGRATION.md](./15A_GOOGLE_ECOSYSTEM_INTEGRATION.md)** - Complete Google ecosystem overview
 
 ## 🎯 Key Requirements
 
@@ -58,6 +60,7 @@ This implementation guide is split into the following documents:
 - **Data Backup & Restore** (JSON export/import) - Document 11
 - **Theme System** (Dark/Light/Custom themes) - Document 12
 - **Google Sheets Sync** (Bidirectional sync with personal_id as key) - Document 13
+- **Transaction Attachments** (Store receipts/invoices in Google Drive) - Document 15
 
 ## 🚀 Implementation Phases
 
