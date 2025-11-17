@@ -9,6 +9,7 @@ This guide is specifically designed for AI agents to implement a production-read
 This implementation guide is split into the following documents:
 
 1. **[01_PROJECT_STRUCTURE.md](./01_PROJECT_STRUCTURE.md)** - Complete project structure and setup instructions
+   - **[01A_STRICT_CONFIGS.md](./01A_STRICT_CONFIGS.md)** - Strict TypeScript & ESLint configurations for bug prevention
 2. **[02_DATABASE_SCHEMA.md](./02_DATABASE_SCHEMA.md)** - Full PostgreSQL database schema with Prisma
 3. **[03_AUTHENTICATION_SYSTEM.md](./03_AUTHENTICATION_SYSTEM.md)** - JWT authentication and authorization
 4. **[04_API_IMPLEMENTATION.md](./04_API_IMPLEMENTATION.md)** - Complete REST API implementation

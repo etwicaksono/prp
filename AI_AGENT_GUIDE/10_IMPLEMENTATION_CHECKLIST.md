@@ -1,5 +1,107 @@
 # 10. Implementation Checklist & Troubleshooting
 
+## 🔍 Pre-Validation Requirements
+
+### CRITICAL: Run These Commands BEFORE Using the Checklist
+
+Before going through any implementation checklist, you MUST ensure your code passes these validation checks:
+
+```bash
+# 1. TypeScript Type Checking - MUST PASS with NO ERRORS
+npx tsc --noEmit
+
+# Expected output:
+# ✔ No errors found
+
+# If errors exist, FIX THEM FIRST before proceeding!
+```
+
+```bash
+# 2. ESLint Checking - MUST PASS with NO ERRORS
+npm run lint
+
+# Or if not configured in package.json:
+npx eslint . --ext .ts,.tsx
+
+# Expected output:
+# ✔ No ESLint errors found
+
+# Fix all linting errors before continuing!
+```
+
+```bash
+# 3. Build Test - MUST BUILD SUCCESSFULLY
+npm run build
+
+# Expected output:
+# ✔ Compiled successfully
+# ✔ Linting and checking validity of types
+# ✔ Creating optimized production build
+```
+
+### ⚠️ DO NOT PROCEED IF ANY OF THESE FAIL!
+
+If any of the above commands fail:
+1. **Fix all TypeScript errors** - No `any` types unless explicitly required
+2. **Fix all ESLint errors** - Follow consistent code style
+3. **Ensure build completes** - No build-time errors
+
+### Common TypeScript Errors to Fix:
+
+```typescript
+// ❌ WRONG - Avoid 'any' types
+const data: any = await fetchData();
+
+// ✅ CORRECT - Use proper types
+const data: Transaction[] = await fetchData();
+
+// ❌ WRONG - Missing return type
+function calculateAmount(value) {
+  return value * 2;
+}
+
+// ✅ CORRECT - Explicit types
+function calculateAmount(value: number): number {
+  return value * 2;
+}
+
+// ❌ WRONG - Possible null/undefined
+const name = user.name.toUpperCase();
+
+// ✅ CORRECT - Handle null/undefined
+const name = user?.name?.toUpperCase() ?? '';
+```
+
+### Common ESLint Errors to Fix:
+
+```typescript
+// ❌ WRONG - Unused variables
+import { useState, useEffect } from 'react'; // useEffect unused
+
+// ✅ CORRECT - Remove unused imports
+import { useState } from 'react';
+
+// ❌ WRONG - Missing dependencies
+useEffect(() => {
+  fetchData(userId);
+}, []); // Missing userId dependency
+
+// ✅ CORRECT - Include all dependencies
+useEffect(() => {
+  fetchData(userId);
+}, [userId]);
+
+// ❌ WRONG - Console.log in production
+console.log('Debug:', data);
+
+// ✅ CORRECT - Remove or use proper logging
+if (process.env.NODE_ENV === 'development') {
+  console.log('Debug:', data);
+}
+```
+
+---
+
 ## ✅ Complete Implementation Validation Checklist
 
 Use this checklist to verify that every critical component has been implemented correctly.

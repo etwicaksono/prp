@@ -292,7 +292,30 @@ npm install -D \
   @types/react-dom@^18.2.0
 ```
 
-### Step 3: Environment Variables
+### Step 3: Install Additional Development Dependencies for Strict Mode
+
+For strict TypeScript and ESLint configuration (RECOMMENDED), install these packages:
+
+```bash
+# Install ESLint and related packages for strict code quality
+npm install -D \
+  @typescript-eslint/parser \
+  @typescript-eslint/eslint-plugin \
+  eslint-plugin-react \
+  eslint-plugin-react-hooks \
+  eslint-plugin-jsx-a11y \
+  eslint-plugin-import \
+  eslint-plugin-security \
+  eslint-plugin-unused-imports \
+  eslint-plugin-no-secrets \
+  eslint-import-resolver-typescript \
+  eslint-config-prettier \
+  prettier
+
+# After installation, copy the strict configurations from 01A_STRICT_CONFIGS.md
+```
+
+### Step 4: Environment Variables
 
 Create `.env.local` file:
 
@@ -316,7 +339,9 @@ SENTRY_DSN=""
 
 ### Step 4: TypeScript Configuration
 
-Update `tsconfig.json`:
+> **⚠️ IMPORTANT**: For a production-ready, bug-minimizing configuration with strict type checking and comprehensive ESLint rules, see **[01A_STRICT_CONFIGS.md](./01A_STRICT_CONFIGS.md)**. The configuration below is a basic starting point.
+
+Update `tsconfig.json` (basic version):
 
 ```json
 {
@@ -356,6 +381,13 @@ Update `tsconfig.json`:
   "exclude": ["node_modules"]
 }
 ```
+
+**🛡️ For production use, implement the strict configuration from [01A_STRICT_CONFIGS.md](./01A_STRICT_CONFIGS.md) which includes:**
+- All TypeScript strict flags enabled
+- No implicit any, strict null checks
+- Comprehensive ESLint rules
+- Security and accessibility checks
+- Import ordering and unused code detection
 
 ### Step 5: Tailwind Configuration
 
@@ -593,8 +625,14 @@ Update `package.json`:
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:fix": "next lint --fix",
     "type-check": "tsc --noEmit",
+    "type-check:watch": "tsc --noEmit --watch",
+    "validate": "npm run type-check && npm run lint",
+    "validate:fix": "npm run type-check && npm run lint:fix",
     "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,json,md}\"",
+    "pre-commit": "npm run validate && npm run format:check",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:push": "prisma db push",
@@ -613,18 +651,50 @@ Update `package.json`:
 }
 ```
 
+### IMPORTANT: Validation Commands
+
+These commands MUST pass before considering implementation complete:
+
+```bash
+# Run TypeScript type checking (MUST have 0 errors)
+npm run type-check
+# or
+npx tsc --noEmit
+
+# Run ESLint checking (MUST have 0 errors)
+npm run lint
+# or to auto-fix fixable issues
+npm run lint:fix
+
+# Run both validations at once
+npm run validate
+
+# Check code formatting
+npm run format:check
+
+# Run all pre-commit checks
+npm run pre-commit
+```
+
 ## ✅ Setup Verification Checklist
 
 - [ ] Next.js 15+ project created with TypeScript
 - [ ] All dependencies installed
+- [ ] ESLint dev dependencies installed (for strict mode)
 - [ ] Environment variables configured
 - [ ] Database connection string set
 - [ ] TypeScript paths configured
+- [ ] **Strict tsconfig.json applied** (from 01A_STRICT_CONFIGS.md)
+- [ ] **Strict .eslintrc.json configured** (from 01A_STRICT_CONFIGS.md)
+- [ ] **Prettier configured** (.prettierrc and .prettierignore)
 - [ ] Tailwind CSS configured
 - [ ] Global styles added
 - [ ] Next.js config updated
 - [ ] All folders created as specified
 - [ ] Package.json scripts added
+- [ ] **`npm run type-check` passes with 0 errors**
+- [ ] **`npm run lint` passes with 0 errors**
+- [ ] **`npm run build` completes successfully**
 
 ## 🎯 Next Steps
 
