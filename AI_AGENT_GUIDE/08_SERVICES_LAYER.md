@@ -1,5 +1,11 @@
 # 08. Services Layer Implementation
 
+## ⚠️ IMPORTANT: After completing this document:
+1. Run `npx tsc --noEmit` - Must have 0 errors
+2. Run `npm run lint` - Must have 0 errors  
+3. ✅ Check service layer checklist in [Document 10](./10_IMPLEMENTATION_CHECKLIST.md#service-layer)
+4. 🧪 Write service tests as per [Document 14](./14_TESTING_REQUIREMENTS.md#frontend-component-tests)
+
 ## 🌐 API Service Layer Architecture
 
 The service layer abstracts all API calls, handles token injection, and provides type-safe interfaces for the frontend.

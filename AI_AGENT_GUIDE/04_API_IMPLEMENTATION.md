@@ -1,5 +1,11 @@
 # 04. API Implementation Guide
 
+## ⚠️ IMPORTANT: After completing this document:
+1. Run `npx tsc --noEmit` - Must have 0 errors
+2. Run `npm run lint` - Must have 0 errors  
+3. ✅ Check ALL API checklists in [Document 10](./10_IMPLEMENTATION_CHECKLIST.md#api-endpoints)
+4. 🧪 Write API integration tests as per [Document 14](./14_TESTING_REQUIREMENTS.md#api-integration-tests)
+
 ## 🚀 Complete REST API Implementation
 
 ### Prerequisites

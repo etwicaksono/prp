@@ -1,5 +1,11 @@
 # 06. Context and State Management
 
+## ⚠️ IMPORTANT: After completing this document:
+1. Run `npx tsc --noEmit` - Must have 0 errors
+2. Run `npm run lint` - Must have 0 errors  
+3. ✅ Check context providers checklist in [Document 10](./10_IMPLEMENTATION_CHECKLIST.md#context-providers)
+4. 🧪 Write context tests as per [Document 14](./14_TESTING_REQUIREMENTS.md#frontend-component-tests)
+
 ## 🎯 React Context Implementation with Exact Hierarchy
 
 ### Critical Provider Order

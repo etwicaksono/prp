@@ -1,5 +1,11 @@
 # 05. Frontend Foundation Implementation
 
+## ⚠️ IMPORTANT: After completing this document:
+1. Run `npx tsc --noEmit` - Must have 0 errors
+2. Run `npm run lint` - Must have 0 errors  
+3. ✅ Check Phase 3 frontend checklist in [Document 10](./10_IMPLEMENTATION_CHECKLIST.md#phase-3-frontend-implementation)
+4. 🧪 Write component tests as per [Document 14](./14_TESTING_REQUIREMENTS.md#frontend-component-tests)
+
 ## 🎨 UI Components and Layout Structure
 
 ### Step 1: Root Layout

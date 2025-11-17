@@ -1,5 +1,11 @@
 # 07. Default Data Seeding
 
+## ⚠️ IMPORTANT: After completing this document:
+1. Run `npx tsc --noEmit` - Must have 0 errors
+2. Run `npm run lint` - Must have 0 errors  
+3. ✅ Check default data seeding checklist in [Document 10](./10_IMPLEMENTATION_CHECKLIST.md#default-data-seeding)
+4. 🧪 Write seeding tests as per [Document 14](./14_TESTING_REQUIREMENTS.md)
+
 ## 📊 Default Categories and Accounts for New Users
 
 When a new user registers, the system automatically creates 70+ categories and 3 default accounts. This ensures users can start tracking finances immediately without manual setup.
