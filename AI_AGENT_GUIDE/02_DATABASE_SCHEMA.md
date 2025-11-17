@@ -1,5 +1,11 @@
 # 02. Database Schema Implementation
 
+## ⚠️ IMPORTANT: After completing this document:
+1. Run `npx tsc --noEmit` - Must have 0 errors
+2. Run `npm run lint` - Must have 0 errors  
+3. ✅ Check Phase 2 backend checklist in [Document 10](./10_IMPLEMENTATION_CHECKLIST.md#phase-2-backend-implementation)
+4. 🧪 Write database tests as per [Document 14](./14_TESTING_REQUIREMENTS.md)
+
 ## 📊 Complete PostgreSQL Database Schema with Prisma
 
 ### Step 1: Initialize Prisma

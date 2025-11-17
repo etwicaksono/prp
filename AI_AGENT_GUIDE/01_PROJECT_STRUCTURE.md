@@ -1,5 +1,11 @@
 # 01. Project Structure and Setup
 
+## ⚠️ IMPORTANT: After completing this document:
+1. Run `npx tsc --noEmit` - Must have 0 errors
+2. Run `npm run lint` - Must have 0 errors  
+3. ✅ Check Phase 1 checklist in [Document 10](./10_IMPLEMENTATION_CHECKLIST.md#phase-1-project-setup)
+4. 🧪 Write tests as per [Document 14](./14_TESTING_REQUIREMENTS.md)
+
 ## 📂 Complete Project Structure
 
 Create this exact folder structure:

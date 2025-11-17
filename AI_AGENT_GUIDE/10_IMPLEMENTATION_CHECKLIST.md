@@ -131,6 +131,12 @@ Use this checklist to verify that every critical component has been implemented 
 - [ ] All directories in place (app, src, prisma, etc.)
 - [ ] Static data files created (default_categories.json, default_accounts.json)
 
+### Phase 1 Tests Required
+- [ ] Jest configuration created
+- [ ] Test setup file created
+- [ ] Database connection tests written
+- [ ] Environment variable loading tests
+
 ---
 
 ## 📋 Phase 2: Backend Implementation
@@ -182,6 +188,23 @@ Use this checklist to verify that every critical component has been implemented 
 - [ ] Retry logic on conflicts (409 errors)
 - [ ] Maximum 3 retry attempts
 
+### Phase 2 Tests Required
+- [ ] **Authentication Tests**:
+  - [ ] JWT generation and validation tests
+  - [ ] Password hashing tests
+  - [ ] Token refresh tests
+  - [ ] Rate limiting tests
+- [ ] **API Endpoint Tests**:
+  - [ ] All CRUD operations tested
+  - [ ] Error responses tested
+  - [ ] Input validation tests
+  - [ ] User isolation tests
+- [ ] **Business Logic Tests**:
+  - [ ] Amount sign convention tests (100% coverage)
+  - [ ] Personal ID generation tests (100% coverage)
+  - [ ] Transfer creation tests (100% coverage)
+  - [ ] Balance calculation tests
+
 ---
 
 ## 📋 Phase 3: Frontend Implementation
@@ -221,6 +244,21 @@ Use this checklist to verify that every critical component has been implemented 
 - [ ] Category tree structure
 - [ ] Real-time balance updates
 
+### Phase 3 Tests Required
+- [ ] **Component Tests**:
+  - [ ] Form validation tests
+  - [ ] User interaction tests
+  - [ ] Error state tests
+  - [ ] Loading state tests
+- [ ] **Context Tests**:
+  - [ ] Provider hierarchy tests
+  - [ ] State management tests
+  - [ ] Hook functionality tests
+- [ ] **Service Layer Tests**:
+  - [ ] API client tests
+  - [ ] Error handling tests
+  - [ ] Token injection tests
+
 ---
 
 ## 📋 Phase 4: Data & Business Logic
@@ -252,9 +290,42 @@ Use this checklist to verify that every critical component has been implemented 
 - [ ] Type safety throughout
 - [ ] Error messages user-friendly
 
+### Phase 4 Tests Required
+- [ ] **Data Seeding Tests**:
+  - [ ] Default categories creation test
+  - [ ] Default accounts creation test
+  - [ ] Hierarchy validation tests
+- [ ] **Business Rules Tests**:
+  - [ ] Amount convention enforcement
+  - [ ] Multi-tenancy isolation
+  - [ ] Data validation schemas
+- [ ] **Integration Tests**:
+  - [ ] Full user registration flow
+  - [ ] Transaction lifecycle tests
+  - [ ] Transfer operation tests
+
 ---
 
 ## 📋 Phase 5: Testing & Validation
+
+### 🚨 MANDATORY: Automated Testing (See Document 14)
+- [ ] **Unit Tests Written** (minimum 80% coverage)
+  - [ ] Amount sign convention tests
+  - [ ] Personal ID generation tests
+  - [ ] JWT authentication tests
+  - [ ] Business logic functions tested
+- [ ] **Integration Tests Written**
+  - [ ] All API endpoints tested
+  - [ ] Database operations tested
+  - [ ] User isolation verified
+- [ ] **E2E Tests Written**
+  - [ ] User registration flow
+  - [ ] Transaction creation flow
+  - [ ] Transfer creation flow
+- [ ] **Test Coverage Report Generated**
+  - [ ] Run: `npm run test:coverage`
+  - [ ] Coverage > 80% overall
+  - [ ] Critical logic 100% covered
 
 ### Manual Testing Checklist
 - [ ] Can register new user

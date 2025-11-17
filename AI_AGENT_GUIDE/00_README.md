@@ -26,6 +26,7 @@ This implementation guide is split into the following documents:
     - **[12A_THEME_API_ENDPOINTS.md](./12A_THEME_API_ENDPOINTS.md)** - API endpoints for theme preferences
 13. **[13_GOOGLE_SHEETS_INTEGRATION.md](./13_GOOGLE_SHEETS_INTEGRATION.md)** - Bidirectional Google Sheets sync using personal_id as key
     - **[13A_GOOGLE_SHEETS_FRONTEND_SERVICE.md](./13A_GOOGLE_SHEETS_FRONTEND_SERVICE.md)** - Frontend service implementation
+14. **[14_TESTING_REQUIREMENTS.md](./14_TESTING_REQUIREMENTS.md)** - 🚨 **MANDATORY**: Unit, integration, and E2E testing requirements
 
 ## 🎯 Key Requirements
 
@@ -158,7 +159,13 @@ finance-app/
 3. **Copy Exactly**: Use the exact code provided, don't improvise
 4. **Test Each Phase**: Verify each implementation phase before proceeding
 5. **Check Document 09**: Review critical rules before implementing each feature
-6. **Use Document 10**: Validate your implementation against the checklist
+6. **⚠️ CRITICAL: After EACH document implementation**:
+   - Run `npx tsc --noEmit` to verify TypeScript has 0 errors
+   - Run `npm run lint` to verify ESLint has 0 errors  
+   - Run `npm test` to verify all tests pass
+   - ✅ **Check the relevant section in Document 10 checklist**
+   - **Write tests** for the features you just implemented (see Document 14)
+7. **Use Document 10**: Final validation checklist for the complete implementation
 
 ## 🎯 Success Criteria
 
