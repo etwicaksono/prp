@@ -20,6 +20,11 @@ This implementation guide is split into the following documents:
 9. **[09_CRITICAL_RULES.md](./09_CRITICAL_RULES.md)** - Critical implementation rules and conventions
 10. **[10_IMPLEMENTATION_CHECKLIST.md](./10_IMPLEMENTATION_CHECKLIST.md)** - Validation checklist and common issues
 
+### 🚀 Additional Features (Optional)
+11. **[11_BACKUP_RESTORE_FEATURE.md](./11_BACKUP_RESTORE_FEATURE.md)** - Data export/import for backup and restore
+12. **[12_THEME_SYSTEM.md](./12_THEME_SYSTEM.md)** - Complete theming system with dark/light/custom modes
+    - **[12A_THEME_API_ENDPOINTS.md](./12A_THEME_API_ENDPOINTS.md)** - API endpoints for theme preferences
+
 ## 🎯 Key Requirements
 
 ### Technical Stack
@@ -36,6 +41,7 @@ This implementation guide is split into the following documents:
 2. **Type Safety**: End-to-end TypeScript with strict mode
 3. **Security First**: JWT authentication, encrypted token storage, input validation
 4. **User Isolation**: Multi-tenant architecture with user_id filtering
+5. **Extensible Design**: New features can be added without breaking existing functionality (see docs 11 & 12 for examples)
 
 ### Core Features
 - Multi-account management (bank, cash, credit cards)
@@ -46,6 +52,8 @@ This implementation guide is split into the following documents:
 - Transfer between accounts
 - Data import/export
 - Recurring transactions
+- **Data Backup & Restore** (JSON export/import) - Document 11
+- **Theme System** (Dark/Light/Custom themes) - Document 12
 
 ## 🚀 Implementation Phases
 
