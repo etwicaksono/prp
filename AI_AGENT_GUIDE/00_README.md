@@ -24,6 +24,8 @@ This implementation guide is split into the following documents:
 11. **[11_BACKUP_RESTORE_FEATURE.md](./11_BACKUP_RESTORE_FEATURE.md)** - Data export/import for backup and restore
 12. **[12_THEME_SYSTEM.md](./12_THEME_SYSTEM.md)** - Complete theming system with dark/light/custom modes
     - **[12A_THEME_API_ENDPOINTS.md](./12A_THEME_API_ENDPOINTS.md)** - API endpoints for theme preferences
+13. **[13_GOOGLE_SHEETS_INTEGRATION.md](./13_GOOGLE_SHEETS_INTEGRATION.md)** - Bidirectional Google Sheets sync using personal_id as key
+    - **[13A_GOOGLE_SHEETS_FRONTEND_SERVICE.md](./13A_GOOGLE_SHEETS_FRONTEND_SERVICE.md)** - Frontend service implementation
 
 ## 🎯 Key Requirements
 
@@ -54,6 +56,7 @@ This implementation guide is split into the following documents:
 - Recurring transactions
 - **Data Backup & Restore** (JSON export/import) - Document 11
 - **Theme System** (Dark/Light/Custom themes) - Document 12
+- **Google Sheets Sync** (Bidirectional sync with personal_id as key) - Document 13
 
 ## 🚀 Implementation Phases
 
